@@ -22,6 +22,8 @@ def add_segment(start, vector):
     return (start[0] + vector[0], start[1] + vector[1])
 
 def check_intersect(a,b):
+    #Compare x value of y segment with range of x values for x segment, and repeat for y of x segment. 
+    #If both within each other segment's ranges, intersection is at x val of y segment and y val of x segment
     if(a[0][1] == a[1][1]):
         x_seg = a
         y_seg = b
