@@ -1,4 +1,8 @@
+import time
 
+print('\nRunning Day 2 Script\n')
+
+start_time = time.time()
 def get_initial_state(): #could do with deep copy instead of fetching each time
     with open('2/input.txt', 'r') as input_file:
         return(list(map(int, input_file.read().split(','))))
@@ -41,4 +45,6 @@ for noun in range(100):
         memory[2] = verb
         if run_intcode(memory)[0] == target_output:
             print('Success! Noun * 100 + Verb ==', (noun*100 + verb))
-        
+
+end_time = time.time()
+print('\nTimings: %.4fs' % (end_time-start_time))

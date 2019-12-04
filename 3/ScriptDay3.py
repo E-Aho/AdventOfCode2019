@@ -1,3 +1,7 @@
+import time
+
+print('\nRunning Day 3 Script\n')
+start_time = time.time()
 def parse_instruction(instruction): #returns a vector
     (direction, magnitude) = (instruction[0], int(instruction[1:]))
     if direction == "R":
@@ -111,3 +115,6 @@ for a in stepped_maps[0]:
                 steps_to_intersections.append(tot_steps)
 
 print('Minimum steps to intersections:' , min(steps_to_intersections))
+
+end = time.time()
+print('\nTimings: %.4fs' % (end-start_time))

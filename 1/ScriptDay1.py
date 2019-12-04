@@ -1,6 +1,11 @@
+import time
+
 with open('1/input.txt', 'r') as input_file:
     modules = input_file.read().splitlines()
 
+print('Running Day 1 Script')
+
+start_time = time.time()
 fuel_sum = 0
 
 def get_fuel(mass):
@@ -23,5 +28,9 @@ fuel_rec_sum = 0
 for module in modules:
     mass = int(module)
     fuel_rec_sum += get_fuel_recursion(mass)
+
+end_time = time.time()
     
 print('Recursive total fuel for second task = ', fuel_rec_sum, '\n') #Answer to part 2
+
+print('\nTimings: %.6fs' % (end_time-start_time))
