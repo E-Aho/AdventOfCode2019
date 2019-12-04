@@ -3,7 +3,7 @@ import time
 with open('1/input.txt', 'r') as input_file:
     modules = input_file.read().splitlines()
 
-print('Running Day 1 Script')
+print('\nRunning Day 1 Script\n')
 
 start_time = time.time()
 fuel_sum = 0
