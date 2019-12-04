@@ -17,6 +17,14 @@ def check_fit(passcode):
         print('error')
         return False
 
+count_fit = 0
+for code in range(min_input, max_input):
+    if check_fit(code):
+        count_fit += 1
+    
+print('The solution to the first part is: ', count_fit)
+
+#Part 2
 def second_check_fit(passcode): #works in O(n), only one pass
     double = 0
     counter = 0
@@ -42,18 +50,7 @@ def second_check_fit(passcode): #works in O(n), only one pass
         print('error in second check')
         return False
 
-count_fit = 0
-
-for code in range(min_input, max_input):
-    if check_fit(code):
-        count_fit += 1
-    
-print('The solution to the first part is: ', count_fit)
-
-
-
 count_second_fit = 0
-
 for code in range(min_input, max_input):
     if second_check_fit(code):
         count_second_fit += 1
