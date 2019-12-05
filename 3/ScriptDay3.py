@@ -2,6 +2,7 @@ import time
 
 print('\nRunning Day 3 Script\n')
 start_time = time.time()
+
 def parse_instruction(instruction): #returns a vector
     (direction, magnitude) = (instruction[0], int(instruction[1:]))
     if direction == "R":

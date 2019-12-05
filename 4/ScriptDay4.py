@@ -1,6 +1,7 @@
+import time
+
 min_input = 372037
 max_input = 905157
-import time
 
 print('\nRunning Day 4 Script\n')
 
