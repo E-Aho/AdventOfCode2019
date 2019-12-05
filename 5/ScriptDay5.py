@@ -1,11 +1,11 @@
-finish_iter = False
+#NB: probably could clean this up using classes for instructions but this works and is still pretty clear
+#Only problem is maybe that param[2] isn't as clear with what it is doing as it could be but oh well
 
 def get_initial_state(): #could do with deep copy instead of fetching each time
     with open('5/input.txt', 'r') as input_file:
         return(list(map(int, input_file.read().split(','))))
 
 #Define functions to be called 
-
 def get_params(array, modes, index):
     params = []
     modes = modes[::-1]
