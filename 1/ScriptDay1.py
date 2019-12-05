@@ -33,4 +33,4 @@ end_time = time.time()
     
 print('Recursive total fuel for second task = ', fuel_rec_sum, '\n') #Answer to part 2
 
-print('\nTimings: %.6fs' % (end_time-start_time))
+print('\nTime to complete: %.6fs' % (end_time-start_time))

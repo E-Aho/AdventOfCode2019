@@ -21,6 +21,7 @@ def perform_action(array, index):
         return True #encountered error
 
 intcode = get_initial_state()
+#initialize with constants from question
 intcode[1] = 12
 intcode[2] = 2
 
@@ -47,4 +48,4 @@ for noun in range(100):
             print('Success! Noun * 100 + Verb ==', (noun*100 + verb))
 
 end_time = time.time()
-print('\nTimings: %.4fs' % (end_time-start_time))
+print('\nTime to complete: %.4fs' % (end_time-start_time))

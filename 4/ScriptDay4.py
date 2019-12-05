@@ -63,4 +63,4 @@ end = time.time()
 
 print("The solution to the second part is: ", count_second_fit)
 
-print('\nTimings: %.4fs' % (end-start))
+print('\nTime to complete: %.4fs' % (end-start))

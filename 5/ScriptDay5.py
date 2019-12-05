@@ -1,6 +1,6 @@
 #NB: probably could clean this up using classes for instructions but this works and is still pretty clear
 #Only problem is maybe that param[2] isn't as clear with what it is doing as it could be but oh well
-
+import time
 def get_initial_state(): #could do with deep copy instead of fetching each time
     with open('5/input.txt', 'r') as input_file:
         return(list(map(int, input_file.read().split(','))))
@@ -79,6 +79,7 @@ finish_iter = False
 
 #run through intcode
 #only increment index by count( of values accessed )IF the instruction pointer didn't change
+
 while finish_iter == False: 
     #init fn, get method code from opcode str
     count = 0
@@ -97,6 +98,7 @@ while finish_iter == False:
     elif fn == '03':
         opcode_3(array, '', index)
         count = 2
+        start_time = time.time() #start timing here to avoid timing how long it the user takes to input the value
     elif fn == '04':
         print('Output: ',opcode_4(array, '', index))
         count = 2
@@ -126,4 +128,6 @@ while finish_iter == False:
     else:
         index += count
         continue
- 
+end_time = time.time()
+
+print('\nTime to complete: %.6fs' % (end_time-start_time))
