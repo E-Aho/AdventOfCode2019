@@ -118,4 +118,4 @@ for a in stepped_maps[0]:
 print('\nPart 2: \nMinimum steps to intersections:' , min(steps_to_intersections))
 
 end = time.time()
-print('\nTime to complete: %.4fs' % (end-start_time))
+print('\nTotal time to complete: %.4fs' % (end-start_time))

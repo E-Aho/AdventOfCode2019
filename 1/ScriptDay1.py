@@ -15,7 +15,7 @@ for module in modules:
     mass = int(module)
     fuel_sum += get_fuel(mass)
 
-print('\nFuel sum for first task = ', fuel_sum) #Answer to part 1
+print('\nPart 1: \nFuel sum for first task = ', fuel_sum) #Answer to part 1
 
 def get_fuel_recursion(mass):
     fuel_tot = 0
@@ -31,6 +31,6 @@ for module in modules:
 
 end_time = time.time()
     
-print('Recursive total fuel for second task = ', fuel_rec_sum, '\n') #Answer to part 2
+print('\nPart 2: \nRecursive total fuel for second task = ', fuel_rec_sum, '\n') #Answer to part 2
 
-print('\nTime to complete: %.6fs' % (end_time-start_time))
+print('\nTotal time to complete: %.6fs' % (end_time-start_time))

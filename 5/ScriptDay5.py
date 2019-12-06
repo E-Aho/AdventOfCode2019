@@ -27,7 +27,7 @@ def opcode_2(array, modes, index):
 
 def opcode_3(array, modes, index):
     address = array[index+1]
-    val = int(input("Enter a value for opcode 3\n"))
+    val = int(input("Enter a value for Opcode 3 at index %i \n" % index))
     array[address] = val
 
 def opcode_4(array, modes, index):

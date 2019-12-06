@@ -34,11 +34,11 @@ def run_intcode(intcode_arr):
             i += 4
     return intcode_arr
 
-print('Output for first task:', (run_intcode(intcode))[0])
+print('\nPart 1: \nOutput for first task:', (run_intcode(intcode))[0])
 
 target_output = 19690720
 
-print('\nSearching for Noun + Verb combinations... \n')
+print('\nPart 2: \nSearching for Noun + Verb combinations... \n')
 for noun in range(100):
     for verb in range(100):
         memory = get_initial_state()

@@ -27,7 +27,7 @@ for code in range(min_input, max_input):
     if check_fit(code):
         count_fit += 1
     
-print('The solution to the first part is: ', count_fit)
+print('\nPart 1: \nThe solution to the first part is: ', count_fit)
 
 #Part 2
 def second_check_fit(passcode): #works in O(n), only one pass
@@ -61,6 +61,6 @@ for code in range(min_input, max_input):
         count_second_fit += 1
 end = time.time()
 
-print("The solution to the second part is: ", count_second_fit)
+print("\nPart 2: \nThe solution to the second part is: ", count_second_fit)
 
 print('\nTime to complete: %.4fs' % (end-start))
