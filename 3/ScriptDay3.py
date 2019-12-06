@@ -77,7 +77,7 @@ for intersect in intersections:
     man_dist = get_manhattan(intersect[0], intersect[1])
     if man_dist > 0:
         dist.append(man_dist)
-print("Minimum manhattan distance to an intersection: ", min(dist))
+print("\nPart 1: \nMinimum manhattan distance to an intersection: ", min(dist))
 
 
 #Part 2
@@ -115,7 +115,7 @@ for a in stepped_maps[0]:
             if tot_steps != 0:
                 steps_to_intersections.append(tot_steps)
 
-print('Minimum steps to intersections:' , min(steps_to_intersections))
+print('\nPart 2: \nMinimum steps to intersections:' , min(steps_to_intersections))
 
 end = time.time()
 print('\nTime to complete: %.4fs' % (end-start_time))
