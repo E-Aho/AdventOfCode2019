@@ -33,7 +33,8 @@ def get_tot_orbits(starting_node:node, planet_dict:dict, starting_depth: int):
         tot_connectivity += get_tot_orbits(new_node,planet_dict,curr_depth) #direct + indirect orbits for children of this planet
     return tot_connectivity
 
-def dijkstra_search(start, target, planet_dict):
+def graph_search(start, target, planet_dict): #pseudo dijkstra search.
+    # More complex than need be for this problem but may be handy in a later problem if graph not a tree
 
     unvisited_nodes = set(planet_dict.keys())
     u = planet_dict[start]
@@ -76,7 +77,7 @@ print('Time to complete part 1: %.4fs\n' % (end_1-start_1))
 
 #Part 2 solution
 start_2 = time.time()
-distance = dijkstra_search('YOU', 'SAN', planet_dict)
+distance = graph_search('YOU', 'SAN', planet_dict)
 end_2 = time.time()
 print("\nPart 2: \nDistance from you to Santa: ", distance-2) #-2, we don't care about journey from you to your orbit and SAN to theirs
 print('Time to complete part 2: %.4fs\n' % (end_2-start_2))

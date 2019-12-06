@@ -1,11 +1,10 @@
 import time
-
 min_input = 372037
 max_input = 905157
-
 print('\nRunning Day 4 Script\n')
-
 start = time.time()
+
+#Part 1
 def check_fit(passcode): 
     passcode = str(passcode)
     double = 0 
@@ -21,7 +20,7 @@ def check_fit(passcode):
     else:
         print('error')
         return False
-
+        
 count_fit = 0
 for code in range(min_input, max_input):
     if check_fit(code):
@@ -62,5 +61,4 @@ for code in range(min_input, max_input):
 end = time.time()
 
 print("\nPart 2: \nThe solution to the second part is: ", count_second_fit)
-
 print('\nTime to complete: %.4fs' % (end-start))

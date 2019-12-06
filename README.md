@@ -7,7 +7,9 @@ These are all done by myself in python, mostly just for fun and for practice/bra
 
 If you have any comments/questions about how or why I've done something feel free to let me know. I've tried to make these quite readable but that wasn't my main worry. 
 
-Also, I've tried to do these so that the solutions are quite fast, but I don't know for sure that each of these solutions is computationally optimal, but I've made efforts to balance speed of compute, speed to solve, and scope/readibility of code.
+Also, I've tried to do these so that the solutions are quite fast, and while I don't know for sure that each of these solutions is computationally optimal(they probably aren't), I've made efforts to balance speed of compute, speed to solve, and scope/readibility of code.
+
+Also also, I'm trying to avoid using external libraries where I can, even though they would make solutions much simpler (e.g NetworkX would make Day 6 much cleaner). I feel like doing it this way helps me to understand the algorithms and solutions better.
 
 Thanks! Enjoy reading this for whatever reason you're reading it!
 

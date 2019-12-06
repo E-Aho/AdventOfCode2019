@@ -3,6 +3,7 @@ import time
 print('\nRunning Day 2 Script\n')
 
 start_time = time.time()
+
 def get_initial_state(): #could do with deep copy instead of fetching each time
     with open('2/input.txt', 'r') as input_file:
         return(list(map(int, input_file.read().split(','))))
