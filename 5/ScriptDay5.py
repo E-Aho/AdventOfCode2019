@@ -72,62 +72,63 @@ def did_change(array, index, opcode):
         return True
 
 #initialize before running through loop
-index = 0
 array = get_initial_state()
-finish_iter = False
-
 
 #run through intcode
 #only increment index by count( of values accessed )IF the instruction pointer didn't change
 
-while finish_iter == False: 
-    #init fn, get method code from opcode str
-    count = 0
-    opcode = str(array[index])
-    opcode = '0000' + opcode 
-    fn = opcode[-2:]
-    print('fn: ', fn)
+def run_opcode(array):
+    output = None
+    index = 0
+    finish_iter = False
+    while finish_iter == False: 
+        #init fn, get method code from opcode str
+        count = 0
+        opcode = str(array[index])
+        opcode = '0000' + opcode 
+        fn = opcode[-2:]
+        print('fn: ', fn)
 
-    # perform needed opcode fn
-    if fn == '01':
-        opcode_1(array, opcode[-5:-2], index)
-        count = 4
-    elif fn == '02':
-        opcode_2(array, opcode[-5:-2], index)
-        count = 4
-    elif fn == '03':
-        opcode_3(array, '', index)
-        count = 2
-        start_time = time.time() #start timing here to avoid timing how long it the user takes to input the value
-    elif fn == '04':
-        print('Output: ',opcode_4(array, '', index))
-        count = 2
-    elif fn == '05':
-        index = opcode_5(array, opcode[-4:-2], index)
-        count = 3
-    elif fn == '06':
-        index = opcode_6(array, opcode[-4:-2], index)
-        count = 3
-    elif fn == '07':
-        opcode_7(array, opcode[-5:-2], index)
-        count =  4
-    elif fn == '08':
-        opcode_8(array, opcode[-5:-2], index)
-        count = 4
-    elif fn == '99':
-        opcode_99()
-        finish_iter = True
-        break
-    else:
-        print('Error')
-        break
+        # perform needed opcode fn
+        if fn == '01':
+            opcode_1(array, opcode[-5:-2], index)
+            count = 4
+        elif fn == '02':
+            opcode_2(array, opcode[-5:-2], index)
+            count = 4
+        elif fn == '03':
+            opcode_3(array, '', index)
+            count = 2
+        elif fn == '04':
+            output = opcode_4(array, '', index)
+            print('Output: ', output)
+            count = 2
+        elif fn == '05':
+            index = opcode_5(array, opcode[-4:-2], index)
+            count = 3
+        elif fn == '06':
+            index = opcode_6(array, opcode[-4:-2], index)
+            count = 3
+        elif fn == '07':
+            opcode_7(array, opcode[-5:-2], index)
+            count =  4
+        elif fn == '08':
+            opcode_8(array, opcode[-5:-2], index)
+            count = 4
+        elif fn == '99':
+            opcode_99()
+            finish_iter = True
+            break
+        else:
+            print('Error')
+            break
 
-    #increment in case where instruction pointer has not changed
-    if did_change(array, index, opcode): 
-        continue
-    else:
-        index += count
-        continue
-end_time = time.time()
+        #increment in case where instruction pointer has not changed
+        if did_change(array, index, opcode): 
+            continue
+        else:
+            index += count
+            continue
+    return(output)
 
-print('\nTime to complete: %.6fs' % (end_time-start_time))
+print(run_opcode(array))
