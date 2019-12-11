@@ -43,7 +43,7 @@ print('The max count of asteroids in LOS:', max_los)
 def dist_from_origin(asteroid):
     return ((asteroid.x - station.x)**2 + (asteroid.y-station.y)**2)
 
-# print(station.los_dict.keys())
+
 sweep_order = sorted(list(station.los_dict.keys()))
 
 def lazer(origin, zap_order):
@@ -56,6 +56,5 @@ def lazer(origin, zap_order):
                 zapped = origin.los_dict[direction].pop(0)
                 if zap_count == 200:
                     return zapped.x*100+zapped.y
-
 
 print(lazer(station,sweep_order))
