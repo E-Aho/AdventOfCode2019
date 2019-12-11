@@ -67,9 +67,9 @@ output = '\n'
 for j in range(max_y, min_y-1, -1):
     for i in range(min_x, max_x, 1):
         if robot2.map[(i,j)] == 1:
-            output += ('#')
+            output += ('█')
         else:
-            output += (' ')
+            output += ('░')
     output += ('\n')
 
 print('\nCode for part 2: \n',output)
