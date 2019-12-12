@@ -6,7 +6,6 @@ def get_input():
     with open('12/input.txt', 'r') as input_file:
         return input_file.readlines()
 
-
 def get_starting_coordinates():
     pattern = re.compile("=([-\d]*)[,>]")
     coordinate_list = []
@@ -17,18 +16,7 @@ def get_starting_coordinates():
 class Moon:
     def __init__(self, coordinates, v):
         self.coordinates = coordinates
-        self.x = self.coordinates[0]
-        self.y = self.coordinates[1]
-        self.z = self.coordinates[2]
-
         self.v = v
-        self.vx = self.v[0]
-        self.vy = self.v[1]
-        self.vz = self.v[2]
-
-    def add_vel(self, vs):
-        for i in range(3):
-            self.v[i] += vs[i]
         
     def apply_vel(self):
         for i in range(3):
@@ -39,21 +27,17 @@ def adjust_vels(moon1, moon2):
         if moon1.coordinates[i] == moon2.coordinates[i]:
             pass
         elif moon1.coordinates[i] > moon2.coordinates[i]:
-            moon1.v[i] -= 1
-            moon2.v[i] += 1 
+            moon1.v[i] -= 1; moon2.v[i] += 1 
         elif moon1.coordinates[i] < moon2.coordinates[i]:
-            moon1.v[i] += 1 
-            moon2.v[i] -= 1
+            moon1.v[i] += 1; moon2.v[i] -= 1
 
 def adjust_single_vel(moon1, moon2, i):
     if moon1.coordinates[i] == moon2.coordinates[i]:
         pass
     elif moon1.coordinates[i] > moon2.coordinates[i]:
-        moon1.v[i] -= 1
-        moon2.v[i] += 1 
+        moon1.v[i] -= 1; moon2.v[i] += 1 
     elif moon1.coordinates[i] < moon2.coordinates[i]:
-        moon1.v[i] += 1 
-        moon2.v[i] -= 1
+        moon1.v[i] += 1 ; moon2.v[i] -= 1
 
 def get_GPE(moon):    
     return (sum(abs(moon.coordinates[i]) for i in range(3)))
@@ -84,7 +68,6 @@ for step in range(1,1001):
 
 sys_energy = sum(get_TE(moon) for moon in moons)
 print('\nPart 1: \nTotal energy of system after 1000 steps:', sys_energy, '\n')
-
 
 #Part 2
 #Each axis is independent, so we can find the cycle length for each axis and get the LCM for these cycle lengths
@@ -119,5 +102,3 @@ for i in range(3): #find time for each axis to cycle
     print('Axis {0} has length: {1}\n'.format(i+1,cycle_len))
 
 print('Number of steps to return to start: ', get_lcm(axis_cycles))
-
-
