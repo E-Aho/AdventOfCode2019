@@ -31,7 +31,7 @@ class Game():
 
     def set_map(self): #read opcode instructions to generate current map state and score
         instructions = []
-        while True:
+        while True: 
             if len(instructions) < 3:
                 self.computer.run()
                 if self.computer.finished is True:
@@ -87,13 +87,17 @@ class Game():
             count_block = self.get_count(2)
         print('Game is finished! Score: ', self.score)
 
-#Part 1
-print('\nPart 1:')
-screen = Game(); screen.set_map(); screen.print_map()
-print('The number of blocks in the screen is:', screen.get_count(2))
+def main():
+    #Part 1
+    print('\nPart 1:')
+    screen = Game(); screen.set_map(); screen.print_map()
+    print('The number of blocks in the screen is:', screen.get_count(2))
 
-#Part 2
-print('\nPart 2:')
-game = Game();
-game.computer.memory[0] = 2 #'Set to free play'
-game.auto_run_game()
+    #Part 2
+    print('\nPart 2:')
+    game = Game();
+    game.computer.memory[0] = 2 #'Set to free play'
+    game.auto_run_game()
+
+if __name__ == "__main__":
+    main()
