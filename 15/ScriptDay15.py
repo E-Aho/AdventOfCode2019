@@ -129,7 +129,7 @@ class Droid:
             self.computer.run()
             out = self.computer.output
             self.read_output(out)
-            # self.print_map()
+            self.print_map()
             self.do_dist()
             if self.oxy_loc is not None:
                 self.do_ox_diffuse()
