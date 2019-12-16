@@ -1,8 +1,5 @@
 from IntcodeMethods import opcode_comp
 
-with open('13/input.txt', 'r') as input_file:
-    initial_state = tuple(map(int,input_file.read().split(',')))
-
 class Tile:
     def __init__(self, id:int):
         self.id = int(id)
@@ -88,6 +85,7 @@ class Game():
         print('Game is finished! Score: ', self.score)
 
 def main():
+    
     #Part 1
     print('\nPart 1:')
     screen = Game(); screen.set_map(); screen.print_map()
@@ -100,4 +98,7 @@ def main():
     game.auto_run_game()
 
 if __name__ == "__main__":
+    with open('13/input.txt', 'r') as input_file:
+        initial_state = tuple(map(int,input_file.read().split(',')))
+        
     main()

@@ -21,7 +21,7 @@ class opcode_comp:
         for i in inputs:
             self.inputs.append(i)
 
-    def set_input(self, input: int):
+    def set_input(self, input: int): #Used for paddle to remain same input until manually changed
         self.inputs = input
     
     def read_input(self) -> int:
@@ -32,8 +32,7 @@ class opcode_comp:
             if isinstance(self.inputs, int):
                 return self.inputs
             else:
-                ip = self.inputs.pop(0)
-                return (ip)
+                return (self.inputs.pop(0))
         
     def has_finished(self):
         return self.finished
