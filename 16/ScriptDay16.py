@@ -43,7 +43,7 @@ def get_neg_indexes(i):
             n += 1
     return out
 
-for i in range(length):
+for i in range(length * 10000):
     pos_d[i] = get_pos_indexes(i)
     neg_d[i] = get_neg_indexes(i)
 
@@ -87,5 +87,23 @@ print(''.join(map(str,iter_phase(initial_state,100)[:8])))
 # Part 2
 
 offset = int(''.join(map(str,initial_state[0:7])))
-print(offset)
+# print(offset)
 
+real_signal = []
+for _ in range(10000):
+    real_signal += initial_state
+
+print(real_signal[0:length])
+
+# real_length = len(real_signal)
+
+# def phase_with_offset(state, offset):
+#     l = [0 for i in range(0,offset)] + [apply_pattern(state,i) for i in range(offset, real_length)]
+#     return list(map(get_dig,l))
+
+# def iter_signal(state, count):
+#     for _ in range(count):
+#         state = phase_with_offset(state, offset)
+#     return state
+
+# print(iter_signal(real_signal, 100)[offset: offset + 8])
