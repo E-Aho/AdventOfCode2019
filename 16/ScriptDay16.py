@@ -1,3 +1,5 @@
+import time
+
 with open('16/input.txt','r') as input_file:
     initial_state = list(map(int,list(input_file.read())))
 
@@ -8,10 +10,7 @@ pos_d = {}
 neg_d = {}
 
 def get_pos_indexes(i, l=length):
-    # 0, 4, 8, ... 4n
-    # 1,2, 9,10, 8n+1, 8n+2
-    # 2,3,4 12n, 12n+1, 12n+2
-    # i => [j*i + range(i) for j]
+
     if i < length/4:
         n,k = 0,0
         out = []
@@ -31,10 +30,7 @@ def get_pos_indexes(i, l=length):
     
         
 def get_neg_indexes(i, l=length):
-    # 3,7, 4n+3
-    # 6,7, 2(4n+3) + 0,1
-    # 12n + 3(4n+3)
-    # i => i(4n+3) + [0:i]
+
     if i < length/4:
         out = []
         n,k = 0,0
@@ -53,17 +49,6 @@ def get_neg_indexes(i, l=length):
 for i in range(length):
     pos_d[i] = get_pos_indexes(i)
     neg_d[i] = get_neg_indexes(i)
-
-# print('0', get_pos_indexes(0))
-# print('1', get_pos_indexes(1))
-# print('2', get_pos_indexes(2))
-# print('3', get_pos_indexes(3))
-# print('4', get_pos_indexes(4))
-
-# print('-0', get_neg_indexes(0))
-# print('-1', get_neg_indexes(1))
-# print('-2', get_neg_indexes(2))
-    
 
 def apply_pattern(state, i, l = length):
     lim = l/4
@@ -107,7 +92,6 @@ for _ in range(COUNT_REPEAT_INPUT):
 
 signal = real_signal[offset:]
     
-
 def perform_large_phase(offset_state):
     out = []
     last_num = 0
@@ -127,9 +111,10 @@ def iter_offset_phase(signal,iter_len):
 
     return ''.join(map(str,signal))
 
-
+st_time = time.time()
 final_signal =iter_offset_phase(signal,100)
+end_time = time.time()
 
 print(final_signal[:8])
-
+print("time to complete:", end_time-st_time)
 
