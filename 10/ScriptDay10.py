@@ -2,6 +2,16 @@ from math import pi, atan2
 from collections import defaultdict
 
 
+def get_angle(x, y):
+    return round(((atan2(x, -y) + 2 * pi) % (2 * pi)), 10)  # Uses weird -y here because of odd axis sys
+
+
+def get_input(file_loc):
+    with open(file_loc, 'r') as input_file:
+        asteroids_raw = input_file.read().splitlines()
+    return [Asteroid(Cords(x, y)) for y, line in enumerate(asteroids_raw) for x, char in enumerate(line) if char == '#']
+
+
 class Cords:
     def __init__(self, x, y):
         self.x = x
@@ -23,16 +33,6 @@ def check_los(origin: Asteroid, asteroids: list):
         origin.los_dict[direction].append(asteroid)
 
 
-def get_input(file_loc):
-    with open(file_loc, 'r') as input_file:
-        asteroids_raw = input_file.read().splitlines()
-    return [Asteroid(Cords(x, y)) for y, line in enumerate(asteroids_raw) for x, char in enumerate(line) if char == '#']
-
-
-def get_angle(x, y):
-    return round(((atan2(x, -y) + 2 * pi) % (2 * pi)), 10)  # Uses weird -y here because of odd axis sys
-
-
 def find_station(asteroids):
     """"returns the count LOS for the station, and the station as an Asteroid object"""
     max_los = 0
@@ -47,6 +47,9 @@ def find_station(asteroids):
             position = origin
 
     return max_los, position
+
+
+# For Part 2
 
 
 def dist_from_origin(asteroid):
@@ -65,12 +68,9 @@ def lazer(origin, zap_order, zap_lim):
                     return zapped  # * 100 + zapped.y
 
 
-# print(lazer(station, sweep_order))
-
-
 if __name__ == "__main__":
-    asteroids = get_input('10/input.txt')
-    max_visible, station = find_station(asteroids)
+    asteroid_array = get_input('10/input.txt')
+    max_visible, station = find_station(asteroid_array)
     print(f'Part 1:\nLargest number of visible asteroids: {max_visible}\n')  # 286
     sweep_order = sorted(list(station.los_dict.keys()))  # keys are angle from station's y axis clockwise
     final_zap = lazer(station, sweep_order, 200)
