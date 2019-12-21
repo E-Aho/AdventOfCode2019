@@ -46,7 +46,6 @@ def to_image(image):
 
 def get_image():
     image = []
-
     for y in range(len_y):
         row = []
         for x in range(len_x):
