@@ -5,25 +5,26 @@ with open('14/input.txt', 'r') as file:
     reactions_raw = file.read().splitlines()
 
 reactions = []
-pattern = re.compile(('\d+ \w+'))
+pattern = re.compile('\d+ \w+')
 
 reaction_dict = {}
 for line in reactions_raw:
-    reaction = [(name, int(v)) for v, name in [item.split(' ') for item in re.findall(pattern,line)]]
+    reaction = [(name, int(v)) for v, name in [item.split(' ') for item in re.findall(pattern, line)]]
     name_out, vol_out = reaction[-1]
     reaction_dict[name_out] = (vol_out, reaction[:-1])
 
+
 def get_fuel(vol_fuel):
-    #NB: Assumes all products come from a single reaction, and all reactions make only 1 product (tree like structure)
+    # NB: Assumes all products come from a single reaction, and all reactions make only 1 product (tree like structure)
     ore_used = 0
     product_dict = {'FUEL': vol_fuel}
     reagent_dict = defaultdict(int)
-    
+
     while len(product_dict) > 0:
         prod, prod_vol = list(product_dict.items())[0]
         del product_dict[prod]
 
-        times_performed = -(-prod_vol//reaction_dict[prod][0]) #double negative here to get ceil division
+        times_performed = -(-prod_vol // reaction_dict[prod][0])  # double negative here to get ceil division
         reagent_dict[prod] += (reaction_dict[prod][0] * times_performed) - prod_vol
 
         for reagent, reagent_vol in reaction_dict[prod][1]:
@@ -38,19 +39,21 @@ def get_fuel(vol_fuel):
                     product_dict[reagent] = product_dict.get(reagent, 0) + vol_to_make
                 else:
                     reagent_dict[reagent] -= vol_needed
-                    
+
     return ore_used
+
 
 def binary_search_fuel(ore_vol):
     min_fuel, max_fuel = 1, 100000000
+    midpoint = (min_fuel + max_fuel) / 2
     while max_fuel - min_fuel > .01:
-        midpoint = (min_fuel + max_fuel) / 2
         ore_needed = get_fuel(int(midpoint))
         if ore_needed > ore_vol:
             max_fuel = midpoint
         else:
             min_fuel = midpoint
     return int(midpoint)
+
 
 print('\nPart 1:')
 print('Ore needed to get 1 unit of fuel: ', get_fuel(1))
