@@ -1,6 +1,7 @@
-#same as Day 13
+# same as Day 13
 
 from collections import defaultdict
+
 
 class OpcodeComp:
     def __init__(self, array):
@@ -20,9 +21,9 @@ class OpcodeComp:
     def add_input(self, *inputs: list):
         self.inputs += inputs
 
-    def set_input(self, input_val: int): # Used for paddle to remain same input until manually changed
+    def set_input(self, input_val: int):  # Used for paddle to remain same input until manually changed
         self.inputs = input_val
-    
+
     def read_input(self) -> int:
         if self.isPhase:
             self.isPhase = False
@@ -32,16 +33,16 @@ class OpcodeComp:
                 return self.inputs
             else:
                 return self.inputs.pop(0)
-        
+
     def has_finished(self):
         return self.finished
-    
+
     def set_output(self, val: int):
         self.output = val
-    
+
     def get_output(self):
         return self.output
-    
+
     def change_base(self, val: int):
         self.base += val
 
@@ -56,7 +57,7 @@ class OpcodeComp:
             elif modes[i] == '2':
                 params.append(int(self.memory[v + self.base]))
         return params
-    
+
     def literal_params(self, modes: list):
         params = []
         for i in range(len(modes)):
@@ -68,7 +69,7 @@ class OpcodeComp:
             elif modes[i] == '2' or 2:
                 params.append(v + self.base)
         return params
-    
+
     def run(self):
         while not self.finished:
             opcode = '0000' + str(self.memory[self.index])
