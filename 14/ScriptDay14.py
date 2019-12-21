@@ -1,17 +1,17 @@
 import re
 from collections import defaultdict
+import time
 
-with open('14/input.txt', 'r') as file:
-    reactions_raw = file.read().splitlines()
 
-reactions = []
-pattern = re.compile('\d+ \w+')
+def get_reaction_dict(raw):
+    pattern = re.compile('\d+ \w+')
 
-reaction_dict = {}
-for line in reactions_raw:
-    reaction = [(name, int(v)) for v, name in [item.split(' ') for item in re.findall(pattern, line)]]
-    name_out, vol_out = reaction[-1]
-    reaction_dict[name_out] = (vol_out, reaction[:-1])
+    reactions = {}
+    for line in raw:
+        reaction = [(name, int(v)) for v, name in [item.split(' ') for item in re.findall(pattern, line)]]
+        name_out, vol_out = reaction[-1]
+        reactions[name_out] = (vol_out, reaction[:-1])
+    return reactions
 
 
 def get_fuel(vol_fuel):
@@ -45,8 +45,9 @@ def get_fuel(vol_fuel):
 
 def binary_search_fuel(ore_vol):
     min_fuel, max_fuel = 1, 100000000
-    midpoint = (min_fuel + max_fuel) / 2
+    midpoint = None
     while max_fuel - min_fuel > .01:
+        midpoint = (min_fuel + max_fuel) / 2
         ore_needed = get_fuel(int(midpoint))
         if ore_needed > ore_vol:
             max_fuel = midpoint
@@ -55,9 +56,21 @@ def binary_search_fuel(ore_vol):
     return int(midpoint)
 
 
-print('\nPart 1:')
-print('Ore needed to get 1 unit of fuel: ', get_fuel(1))
+if __name__ == '__main__':
 
-print('\nPart 2:')
-ore_cap = 1000000000000
-print('Volume of fuel from 1 trillion units of ore:', binary_search_fuel(ore_cap))
+    with open('14/input.txt', 'r') as file:
+        reactions_raw = file.read().splitlines()
+
+    reaction_dict = get_reaction_dict(reactions_raw)
+
+    start_time1 = time.time()
+    print('\nPart 1:')
+    print('Ore needed to get 1 unit of fuel: ', get_fuel(1))
+    end_time1 = time.time()
+
+    start_time2 = time.time()
+    print('\nPart 2:')
+    ore_cap = 1000000000000
+    print('Volume of fuel from 1 trillion units of ore:', binary_search_fuel(ore_cap))
+    end_time2 = time.time()
+    print('\nTimings:\nPart 1: %.4fs\nPart 2: %.4fs' % (end_time1-start_time1, end_time2-start_time2))
