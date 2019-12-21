@@ -4,30 +4,30 @@ print('\nRunning Day 2 Script\n')
 
 start_time = time.time()
 
-def get_initial_state(): #could do with deep copy instead of fetching each time
+
+def get_initial_state():  # could do with deep copy instead of fetching each time
     with open('2/input.txt', 'r') as input_file:
-        return(list(map(int, input_file.read().split(','))))
-    
+        return list(map(int, input_file.read().split(',')))
+
+
 def perform_action(array, index):
-    (Opcode, pos1, pos2, pos3) = array[index:index+4]
+    (Opcode, pos1, pos2, pos3) = array[index:index + 4]
     if Opcode == 1:
         array[pos3] = array[pos1] + array[pos2]
-        return False #should not halt
+        return False  # should not halt
     elif Opcode == 2:
         array[pos3] = array[pos1] * array[pos2]
-        return False #should not halt
+        return False  # should not halt
     elif Opcode == 99:
-        return True #should halt
-    else: 
-        return True #encountered error
-
-#initialize with constants from question
+        return True  # should halt
+    else:
+        return True  # encountered error
 
 
 def run_intcode(intcode_arr):
     i = 0
     while i < len(intcode_arr):
-        if perform_action(intcode_arr, i): #true in case of Opcode 99
+        if perform_action(intcode_arr, i):  # true in case of Opcode 99
             break
         else:
             i += 4
@@ -36,6 +36,7 @@ def run_intcode(intcode_arr):
 
 if __name__ == '__main__':
     intcode = get_initial_state()
+    # initialize with constants from question
     intcode[1] = 12
     intcode[2] = 2
 
