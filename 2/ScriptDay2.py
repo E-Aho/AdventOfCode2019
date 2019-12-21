@@ -21,10 +21,8 @@ def perform_action(array, index):
     else: 
         return True #encountered error
 
-intcode = get_initial_state()
 #initialize with constants from question
-intcode[1] = 12
-intcode[2] = 2
+
 
 def run_intcode(intcode_arr):
     i = 0
@@ -35,18 +33,24 @@ def run_intcode(intcode_arr):
             i += 4
     return intcode_arr
 
-print('\nPart 1: \nOutput for first task:', (run_intcode(intcode))[0])
 
-target_output = 19690720
+if __name__ == '__main__':
+    intcode = get_initial_state()
+    intcode[1] = 12
+    intcode[2] = 2
 
-print('\nPart 2: \nSearching for Noun + Verb combinations... \n')
-for noun in range(100):
-    for verb in range(100):
-        memory = get_initial_state()
-        memory[1] = noun
-        memory[2] = verb
-        if run_intcode(memory)[0] == target_output:
-            print('Success! Noun * 100 + Verb ==', (noun*100 + verb))
+    print('\nPart 1: \nOutput for first task:', (run_intcode(intcode))[0])
 
-end_time = time.time()
-print('\nTime to complete: %.4fs' % (end_time-start_time))
+    target_output = 19690720
+
+    print('\nPart 2: \nSearching for Noun + Verb combinations... \n')
+    for noun in range(100):
+        for verb in range(100):
+            memory = get_initial_state()
+            memory[1] = noun
+            memory[2] = verb
+            if run_intcode(memory)[0] == target_output:
+                print('Success! Noun * 100 + Verb ==', (noun * 100 + verb))
+
+    end_time = time.time()
+    print('\nTime to complete: %.4fs' % (end_time - start_time))
