@@ -1,8 +1,9 @@
-#Adjusted input system a little but otherwise same as Day 11
+# Adjusted input system a little but otherwise same as Day 11
 
 from collections import defaultdict
 
-class opcode_comp:
+
+class OpcodeComp:
     def __init__(self, array):
         self.memory = defaultdict(lambda: 0, enumerate(array))
         self.inputs = []
@@ -21,32 +22,32 @@ class opcode_comp:
         for i in inputs:
             self.inputs.append(i)
 
-    def set_input(self, input: int): #Used for paddle to remain same input until manually changed
-        self.inputs = input
-    
+    def set_input(self, input_val: int):  # Used for paddle to remain same input until manually changed
+        self.inputs = input_val
+
     def read_input(self) -> int:
-        if self.isPhase == True:
+        if self.isPhase:
             self.isPhase = False
             return self.phase
         else:
             if isinstance(self.inputs, int):
                 return self.inputs
             else:
-                return (self.inputs.pop(0))
-        
+                return self.inputs.pop(0)
+
     def has_finished(self):
         return self.finished
-    
-    def set_output(self, val:int):
+
+    def set_output(self, val: int):
         self.output = val
-    
+
     def get_output(self):
         return self.output
-    
+
     def change_base(self, val: int):
         self.base += val
 
-    def interpret_params(self,modes:list):
+    def interpret_params(self, modes: list):
         params = []
         for i in range(len(modes)):
             v = int(self.memory[self.index + i + 1])
@@ -57,8 +58,8 @@ class opcode_comp:
             elif modes[i] == '2':
                 params.append(int(self.memory[v + self.base]))
         return params
-    
-    def literal_params(self, modes:list):
+
+    def literal_params(self, modes: list):
         params = []
         for i in range(len(modes)):
             v = int(self.memory[self.index + i + 1])
@@ -69,13 +70,12 @@ class opcode_comp:
             elif modes[i] == '2' or 2:
                 params.append(v + self.base)
         return params
-    
+
     def run(self):
-        while self.finished == False:
+        while not self.finished:
             opcode = '0000' + str(self.memory[self.index])
             fn = opcode[-2:]
             modes = list(opcode[-3:-6:-1])
-            nums = [self.memory[i] for i in range(self.index, self.index +4)]
             # print('Fn: {}, Modes: {}, Index: {}, Numbers: {}'.format(fn, modes, self.index,nums))
             if fn == '01':
                 params = self.interpret_params(modes)
@@ -131,12 +131,7 @@ class opcode_comp:
                 self.index += 2
             elif fn == '99':
                 self.finished = True
-                # print('\nOpcode Computer Finished')
                 break
             else:
                 print('Error')
                 break
-            
-            
-
-    
