@@ -68,7 +68,7 @@ def graph_search(start, target, planets):  # pseudo dijkstra search.
 
 
 # Run functions and output solutions
-with open('6/input.txt', 'r') as input_file:
+with open('06/input.txt', 'r') as input_file:
     raw_map = input_file.read()
     planet_dict = parse_input(raw_map)
 

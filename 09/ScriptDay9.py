@@ -2,7 +2,7 @@ from IntcodeMethods import OpcodeComp
 
 
 def get_initial_state():
-    with open('9/input.txt', 'r') as input_file:
+    with open('09/input.txt', 'r') as input_file:
         return tuple(map(int, input_file.read().split(',')))
 
 

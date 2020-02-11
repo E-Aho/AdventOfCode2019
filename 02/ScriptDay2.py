@@ -6,7 +6,7 @@ start_time = time.time()
 
 
 def get_initial_state():  # could do with deep copy instead of fetching each time
-    with open('2/input.txt', 'r') as input_file:
+    with open('02/input.txt', 'r') as input_file:
         return list(map(int, input_file.read().split(',')))
 
 

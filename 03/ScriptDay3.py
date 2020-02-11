@@ -121,7 +121,7 @@ def get_steps_to_intersections(maps):
 
 
 if __name__ == '__main__':
-    with open('3/input.txt', 'r') as input_file:
+    with open('03/input.txt', 'r') as input_file:
         raw_wires = input_file.readlines()
         wire_instructions = get_instructions(raw_wires)
         wire_maps = get_maps(wire_instructions)

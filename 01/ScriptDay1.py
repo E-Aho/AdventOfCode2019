@@ -32,7 +32,7 @@ def part_2(inp):
 
 
 if __name__ == "__main__":
-    with open('1/input.txt', 'r') as input_file:
+    with open('01/input.txt', 'r') as input_file:
         input_list = input_file.read().splitlines()
 
     print('\nRunning Day 1 Script\n')

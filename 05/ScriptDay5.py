@@ -4,7 +4,7 @@ import time
 
 
 def get_initial_state():  # could do with deep copy instead of fetching each time
-    with open('5/input.txt', 'r') as input_file:
+    with open('05/input.txt', 'r') as input_file:
         return list(map(int, input_file.read().split(',')))
 
 

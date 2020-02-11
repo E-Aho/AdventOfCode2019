@@ -2,7 +2,7 @@ from math import inf
 
 
 def get_input():
-    with open('8/input.txt', 'r') as input_file:
+    with open('08/input.txt', 'r') as input_file:
         return input_file.read()
 
 
